@@ -36,7 +36,7 @@ class OpenUrlTest < Test::Unit::TestCase
     end
 
     def test_google_search
-        puts @driver.capabilities['snapshotUrl'].sub('http://localhost:4723', 'https://gwjp.appkitbox.com')
+        puts @driver.capabilities['snapshotUrl'])
         # Open URL
         url = "https://www.google.com/"
         puts "Open URL: " + url
@@ -44,7 +44,7 @@ class OpenUrlTest < Test::Unit::TestCase
         element = @driver.find_element(:name, 'q')
         sleep(5)
         @driver.save_screenshot('capture_01.png')
-        
+
         # Input keys
         word = "Remote testKit"
         puts "Input Keys: " + word

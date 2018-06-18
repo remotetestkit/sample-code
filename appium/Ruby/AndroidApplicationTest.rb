@@ -30,9 +30,11 @@ class ContactsAndroidTests < Test::Unit::TestCase
                 deviceName: 'Nexus 5',
                 platformName: 'Android',
                 unicodeKeyboard: 'true',
-                resetKeyboard: 'true',              
+                resetKeyboard: 'true',
                 # set application from RemoteTestKit storage
-                app: 'RTKdemo.apk',
+                # app: 'RTKdemo.apk',
+                # set application from HTTP Url
+                app: 'https://github.com/remotetestkit/sample-code/raw/master/appium/apk/RTKdemo.apk',
                 appPackage: 'com.example.remotetestkit.demo',
                 appActivity: 'MainActivity',
             },
@@ -49,33 +51,33 @@ class ContactsAndroidTests < Test::Unit::TestCase
     end
 
     def test_google_search
-        puts @driver.capabilities['snapshotUrl'].sub('http://localhost:4723', 'https://gwjp.appkitbox.com')
+        puts @driver.capabilities['snapshotUrl'])
         @driver.save_screenshot('capture_01.png')
-        
+
         # get text fields and set text in it
         textfields = @driver.find_elements(:class_name, 'android.widget.EditText')
         textfields[0].send_keys('RTK')
         textfields[1].send_keys('Remote TestKing')
         @driver.save_screenshot('capture_02.png')
-        
+
         # click Save button
         element = @driver.find_element(:id,'com.example.remotetestkit.demo:id/Save')
         element.click()
-        
+
         # set text from Login display
         result = @driver.find_element(:id,'com.example.remotetestkit.demo:id/title4')
         puts 'Login Result : ' + result.text
         assert_equal('Password Error', result.text)
         @driver.save_screenshot('capture_03.png')
-        
+
         # press return key
     		@driver.press_keycode(4)
-        
+
         # delete and set text to text fields
         textfields[1].clear()
         textfields[1].send_keys('Remote TestKit')
         @driver.save_screenshot('capture_04.png')
-        
+
         # click Save button
         element.click()
 

@@ -26,16 +26,16 @@ class AppiumTest(unittest.TestCase):
             'platformName': 'Android',
             'browserName': 'Chrome'
         }
-        self.driver = webdriver.Remote('https://gwjp.appkitbox.com/wd/hub', caps)        
+        self.driver = webdriver.Remote('https://gwjp.appkitbox.com/wd/hub', caps)
         print(self.driver)
-    
+
     def tearDown(self):
         self.driver.quit()
 
     def run_test(self):
-        print(self.driver.capabilities['snapshotUrl'].replace('http://localhost:4723', 'https://gw.nttr-tech.co.jp/wd/hub'))
+        print(self.driver.capabilities['snapshotUrl'])
         driver = self.driver
-                
+
         ''' put the generated appium code here! '''
         # ------
 

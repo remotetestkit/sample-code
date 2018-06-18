@@ -26,14 +26,14 @@ class OpenUrlTest(unittest.TestCase):
             'platformName': 'Android',
             'browserName': 'Chrome'
         }
-        self.driver = webdriver.Remote('https://gwjp.appkitbox.com/wd/hub', caps)        
+        self.driver = webdriver.Remote('https://gwjp.appkitbox.com/wd/hub', caps)
         print(self.driver)
-    
+
     def tearDown(self):
         self.driver.quit()
 
     def test_google_search(self):
-        print(self.driver.capabilities['snapshotUrl'].replace('http://localhost:4723', 'https://gw.nttr-tech.co.jp/wd/hub'))
+        print(self.driver.capabilities['snapshotUrl'])
         # Open URL
         url = "https://www.google.com/"
         print("Open URL: " + url)
@@ -41,7 +41,7 @@ class OpenUrlTest(unittest.TestCase):
         element = self.driver.find_element_by_name('q')
         sleep(5)
         self.driver.save_screenshot('capture_01.png')
-        
+
         # Input keys
         word = "Remote testKit"
         print("Input Keys: " + word)
@@ -49,7 +49,7 @@ class OpenUrlTest(unittest.TestCase):
         element.submit
         sleep(5)
         self.driver.save_screenshot('capture_02.png')
-        
+
         # Get value
         value = self.driver.find_element_by_name('q').get_attribute('value')
         print("Text field value=" + value)

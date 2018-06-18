@@ -26,19 +26,21 @@ class ContactsAndroidTests(unittest.TestCase):
             'platformName': 'Android',
             'unicodeKeyboard': 'true',
             'resetKeyboard': 'true',
-             # set application from RemoteTestKit storage
-            'app': 'RTKdemo.apk',
+            # set application from RemoteTestKit storage
+            # 'app': 'RTKdemo.apk',
+            # set application from HTTP Url
+            'app': 'https://github.com/remotetestkit/sample-code/raw/master/appium/apk/RTKdemo.apk',
             'appPackage': 'com.example.remotetestkit.demo',
-            'appActivity': 'MainActivity'     
+            'appActivity': 'MainActivity'
         }
         self.driver = webdriver.Remote('https://gwjp.appkitbox.com/wd/hub', caps)
         print(self.driver)
-    
+
     def tearDown(self):
         self.driver.quit()
 
     def test_add_contacts(self):
-        print(self.driver.capabilities['snapshotUrl'].replace('http://localhost:4723', 'https://gwjp.appkitbox.com'))
+        print(self.driver.capabilities['snapshotUrl'])
         self.driver.save_screenshot('capture_01.png')
 
         # get text fields and set text in it
@@ -58,18 +60,18 @@ class ContactsAndroidTests(unittest.TestCase):
         self.driver.save_screenshot('capture_03.png')
 
         # press return key
-    	self.driver.press_keycode(4)
+        self.driver.press_keycode(4)
 
         # delete and set text to text fields
         textfields[1].clear()
         textfields[1].send_keys('Remote TestKit')
-        self.driver.save_screenshot('capture_04.png')    
-        
+        self.driver.save_screenshot('capture_04.png')
+
         # click Save button
-        element.click()    
+        element.click()
 
         # get text from Login display
-    	result = self.driver.find_element_by_id('com.example.remotetestkit.demo:id/title2')
+        result = self.driver.find_element_by_id('com.example.remotetestkit.demo:id/title2')
         print("Login Result : " + result.text)
         self.assertEqual('Logged in', result.text)
         self.driver.save_screenshot('capture_05.png')

@@ -36,9 +36,9 @@ class AppiumTest < Test::Unit::TestCase
     end
 
     def run_test
-        puts @driver.capabilities['snapshotUrl'].sub('http://localhost:4723', 'https://gwjp.appkitbox.com')
+        puts @driver.capabilities['snapshotUrl'])
         driver = @driver
-        
+
         # put the generated appium code here!
         # ------
 
