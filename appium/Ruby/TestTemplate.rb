@@ -8,7 +8,7 @@ RTK_USERNAME = ENV['RTK_USERNAME']
 RTK_PASSWORD = ENV['RTK_PASSWORD']
 unless RTK_USERNAME && RTK_PASSWORD then
     puts "Environment variable error"
-    exit(0)
+    exit(1)
 end
 
 
@@ -35,8 +35,8 @@ class AppiumTest < Test::Unit::TestCase
         @driver.quit()
     end
 
-    def run_test
-        puts @driver.capabilities['snapshotUrl'])
+    def test_sample
+        puts @driver.capabilities['snapshotUrl']
         driver = @driver
 
         # put the generated appium code here!
