@@ -36,7 +36,7 @@ class OpenUrlTest < Test::Unit::TestCase
     end
 
     def test_google_search
-        puts @driver.capabilities['snapshotUrl'])
+        puts @driver.capabilities['snapshotUrl']
         # Open URL
         url = "https://www.google.com/"
         puts "Open URL: " + url
