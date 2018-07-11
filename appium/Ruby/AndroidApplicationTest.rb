@@ -51,7 +51,7 @@ class ContactsAndroidTests < Test::Unit::TestCase
     end
 
     def test_google_search
-        puts @driver.capabilities['snapshotUrl'])
+        puts @driver.capabilities['snapshotUrl']
         @driver.save_screenshot('capture_01.png')
 
         # get text fields and set text in it
