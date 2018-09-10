@@ -21,7 +21,6 @@ class ContactsAndroidTests(unittest.TestCase):
         caps = {
             'userName': RTK_USERNAME,
             'password': RTK_PASSWORD,
-            'platform': 'ANDROID',
             'deviceName': 'Nexus 5',
             'platformName': 'Android',
             'unicodeKeyboard': 'true',
