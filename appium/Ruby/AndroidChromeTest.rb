@@ -18,7 +18,6 @@ class OpenUrlTest < Test::Unit::TestCase
             caps: {
                 userName: RTK_USERNAME,
                 password: RTK_PASSWORD,
-                platform: 'ANDROID',
                 deviceName: 'Nexus 5',
                 platformName: 'Android',
                 browserName: 'Chrome'
