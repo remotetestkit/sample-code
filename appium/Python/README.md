@@ -15,11 +15,15 @@
 
 * AndroidApplicationTest.py
 
-	Sample code for application testing
+	Sample code for Android application testing
 
 * AndroidChromeTest.py
 
 	Sample code for browser testing
+
+* iosCalcTest.rb
+
+	Sample code for iOS application testing
 
 * TestTemplate.py
 
