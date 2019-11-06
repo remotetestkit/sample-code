@@ -25,6 +25,7 @@ class ContactsAndroidTests(unittest.TestCase):
             'platformName': 'Android',
             'unicodeKeyboard': 'true',
             'resetKeyboard': 'true',
+            'appiumVersion': '1.15.1',
             # set application from RemoteTestKit storage
             # 'app': 'RTKdemo.apk',
             # set application from HTTP Url
@@ -74,6 +75,7 @@ class ContactsAndroidTests(unittest.TestCase):
         print("Login Result : " + result.text)
         self.assertEqual('Logged in', result.text)
         self.driver.save_screenshot('capture_05.png')
+
 
 if __name__ == '__main__':
     suite = unittest.TestLoader().loadTestsFromTestCase(ContactsAndroidTests)

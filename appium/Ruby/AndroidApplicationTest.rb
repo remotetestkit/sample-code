@@ -30,6 +30,7 @@ class ContactsAndroidTests < Test::Unit::TestCase
                 platformName: 'Android',
                 unicodeKeyboard: 'true',
                 resetKeyboard: 'true',
+                appiumVersion: '1.15.1'
                 # set application from RemoteTestKit storage
                 # app: 'RTKdemo.apk',
                 # set application from HTTP Url

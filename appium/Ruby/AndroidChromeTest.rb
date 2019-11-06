@@ -20,7 +20,8 @@ class OpenUrlTest < Test::Unit::TestCase
                 password: RTK_PASSWORD,
                 deviceName: 'Nexus 5',
                 platformName: 'Android',
-                browserName: 'Chrome'
+                browserName: 'Chrome',
+                appiumVersion: '1.15.1'
             },
             appium_lib: {
                 server_url: 'https://gwjp.appkitbox.com/wd/hub',

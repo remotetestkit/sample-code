@@ -36,6 +36,7 @@ public class AndroidApplicationTest {
 		capabilities.setCapability("unicodeKeyboard", true);
 		capabilities.setCapability("resetKeyboard", true);
 		capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, Integer.toString(180));
+		capabilities.setCapability(MobileCapabilityType.APPIUM_VERSION, "1.15.1");
 		// set application from RemoteTestKit storage
 		// capabilities.setCapability(MobileCapabilityType.APP, "RTKdemo.apk");
 		// set application from HTTP Url

@@ -33,6 +33,7 @@ public class AndroidChromeTest {
 		capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
 		capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Nexus 5");
 		capabilities.setCapability(AndroidMobileCapabilityType.BROWSER_NAME, "Chrome");
+		capabilities.setCapability(MobileCapabilityType.APPIUM_VERSION, "1.15.1");
 
 		driver = new AndroidDriver<>(new URL("https://gwjp.appkitbox.com/wd/hub"), capabilities);
 	}

@@ -23,7 +23,8 @@ class OpenUrlTest(unittest.TestCase):
             'password': RTK_PASSWORD,
             'deviceName': 'Nexus 5',
             'platformName': 'Android',
-            'browserName': 'Chrome'
+            'browserName': 'Chrome',
+            'appiumVersion': '1.15.1'
         }
         self.driver = webdriver.Remote('https://gwjp.appkitbox.com/wd/hub', caps)
         print(self.driver)
@@ -53,6 +54,7 @@ class OpenUrlTest(unittest.TestCase):
         value = self.driver.find_element_by_name('q').get_attribute('value')
         print("Text field value=" + value)
         self.assertEqual(value, "Remote testKit")
+
 
 if __name__ == '__main__':
     suite = unittest.TestLoader().loadTestsFromTestCase(OpenUrlTest)

@@ -23,7 +23,8 @@ class AppiumTest(unittest.TestCase):
             'password': RTK_PASSWORD,
             'deviceName': 'Nexus 5',
             'platformName': 'Android',
-            'browserName': 'Chrome'
+            'browserName': 'Chrome',
+            'appiumVersion': '1.15.1'
         }
         self.driver = webdriver.Remote('https://gwjp.appkitbox.com/wd/hub', caps)
         print(self.driver)
@@ -37,7 +38,6 @@ class AppiumTest(unittest.TestCase):
 
         ''' put the generated appium code here! '''
         # ------
-
 
         # ------
 
