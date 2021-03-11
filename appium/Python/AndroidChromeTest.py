@@ -24,7 +24,8 @@ class OpenUrlTest(unittest.TestCase):
             'deviceName': 'Nexus 5',
             'platformName': 'Android',
             'browserName': 'Chrome',
-            'appiumVersion': '1.15.1'
+            'appiumVersion': '1.15.1',
+            'chromeOptions': {'w3c': False}
         }
         self.driver = webdriver.Remote('https://gwjp.appkitbox.com/wd/hub', caps)
         print(self.driver)

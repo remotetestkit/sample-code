@@ -20,8 +20,8 @@ class OpenUrlTest(unittest.TestCase):
             'password': RTK_PASSWORD,
             'logLevel': 'info',
             'platformName': 'iOS',
-            'deviceName': 'iPhone 7.*',
-            'platformVersion': '11',
+            'deviceName': 'iPhone',
+            'platformVersion': '14',
             'browserName': 'Safari',
         }
         self.driver = webdriver.Remote('https://gwjp.appkitbox.com/wd/hub', caps)
