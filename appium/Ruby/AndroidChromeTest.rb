@@ -21,7 +21,7 @@ class OpenUrlTest < Test::Unit::TestCase
                 deviceName: 'Nexus 5',
                 platformName: 'Android',
                 browserName: 'Chrome',
-                appiumVersion: '1.15.1'
+                chromeOptions: {'w3c': false}
             },
             appium_lib: {
                 server_url: 'https://gwjp.appkitbox.com/wd/hub',
@@ -49,7 +49,7 @@ class OpenUrlTest < Test::Unit::TestCase
         word = "Remote testKit"
         puts "Input Keys: " + word
         element.send_keys(word)
-        element.submit
+        element.send_keys(:enter)
         sleep(5)
         @driver.save_screenshot('capture_02.png')
 
