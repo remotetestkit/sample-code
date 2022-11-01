@@ -1,27 +1,29 @@
 package com.remotetestkit.appium;
 
-import static org.junit.Assert.assertEquals;
-
 import java.io.File;
 import java.net.URL;
 
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
-import io.appium.java_client.android.AndroidKeyCode;
 import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
 
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.Keys;
 
 public class AndroidChromeTest {
 
-	private static AndroidDriver<AndroidElement> driver;
+	private static AndroidDriver driver;
 
 	@BeforeAll
 	static void initAll() throws Exception {
@@ -33,9 +35,9 @@ public class AndroidChromeTest {
 		capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
 		capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Nexus 5");
 		capabilities.setCapability(AndroidMobileCapabilityType.BROWSER_NAME, "Chrome");
-		capabilities.setCapability(MobileCapabilityType.APPIUM_VERSION, "1.15.1");
+		capabilities.setCapability("appiumVersion", "1.22.3");
 
-		driver = new AndroidDriver<>(new URL("https://gwjp.appkitbox.com/wd/hub"), capabilities);
+		driver = new AndroidDriver(new URL("https://gwjp.appkitbox.com/wd/hub"), capabilities);
 	}
 
 	@AfterAll
@@ -51,24 +53,24 @@ public class AndroidChromeTest {
 		String url = "https://www.google.com/";
 		System.out.println("Open URL: " + url);
 		driver.get(url);
-		AndroidElement element = driver.findElementByName("q");
+		WebElement element = driver.findElement(By.name("q"));
 		Thread.sleep(5000);
-		FileUtils.copyFile(driver.getScreenshotAs(OutputType.FILE), new File("capture_01.png"));
+		FileUtils.copyFile(driver.getScreenshotAs(OutputType.FILE), new File("capture_B01.png"));
 
 		// Input keys
 		String word = "Remote TestKit";
 		System.out.println("Input Keys: " + word);
 		element.sendKeys(word);
-		element.submit();
+		element.sendKeys(Keys.chord(Keys.ENTER));
 		Thread.sleep(5000);
-		FileUtils.copyFile(driver.getScreenshotAs(OutputType.FILE), new File("capture_02.png"));
+		FileUtils.copyFile(driver.getScreenshotAs(OutputType.FILE), new File("capture_B02.png"));
 
 		// Get value
-		String value = driver.findElementByName("q").getAttribute("value");
+		String value = driver.findElement(By.name("q")).getAttribute("value");
 		System.out.println("Text field value=" + value);
-		assertEquals(value, "Remote TestKit");
+		Assertions.assertEquals(value, "Remote TestKit");
 
-		driver.pressKeyCode(AndroidKeyCode.KEYCODE_APP_SWITCH);
-		driver.pressKeyCode(AndroidKeyCode.KEYCODE_HOME);
+		driver.pressKey(new KeyEvent(AndroidKey.APP_SWITCH));
+		driver.pressKey(new KeyEvent(AndroidKey.HOME));
 	}
 }
