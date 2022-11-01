@@ -2,27 +2,29 @@
 
 package com.remotetestkit.appium;
 
-import static org.junit.Assert.assertEquals;
-
 import java.io.File;
 import java.net.URL;
 import java.util.List;
 
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
 
 public class AndroidApplicationTest {
 
-	private static AndroidDriver<AndroidElement> driver;
+	private static AndroidDriver driver;
 
 	@BeforeAll
 	static void initAll() throws Exception {
@@ -36,7 +38,7 @@ public class AndroidApplicationTest {
 		capabilities.setCapability("unicodeKeyboard", true);
 		capabilities.setCapability("resetKeyboard", true);
 		capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, Integer.toString(180));
-		capabilities.setCapability(MobileCapabilityType.APPIUM_VERSION, "1.15.1");
+		capabilities.setCapability("appiumVersion", "1.22.3");
 		// set application from RemoteTestKit storage
 		// capabilities.setCapability(MobileCapabilityType.APP, "RTKdemo.apk");
 		// set application from HTTP Url
@@ -44,7 +46,7 @@ public class AndroidApplicationTest {
 		capabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "com.example.remotetestkit.demo");
 		capabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, "MainActivity");
 
-		driver = new AndroidDriver<>(new URL("https://gwjp.appkitbox.com/wd/hub"), capabilities);
+		driver = new AndroidDriver(new URL("https://gwjp.appkitbox.com/wd/hub"), capabilities);
 
 	}
 
@@ -56,40 +58,40 @@ public class AndroidApplicationTest {
 	@Test
 	void loginTest() throws Exception {
 		System.out.println("snapshotUrl: " + driver.getCapabilities().getCapability("snapshotUrl"));
-		FileUtils.copyFile(driver.getScreenshotAs(OutputType.FILE), new File("capture_01.png"));
+		FileUtils.copyFile(driver.getScreenshotAs(OutputType.FILE), new File("capture_A01.png"));
 
 		// get text fields and set text in it
-		List<AndroidElement> textfields = driver.findElementsByClassName("android.widget.EditText");
-		textfields.get(0).sendKeys("RTK");
-		textfields.get(1).sendKeys("Remote TestKing");
-		FileUtils.copyFile(driver.getScreenshotAs(OutputType.FILE), new File("capture_02.png"));
+		List<WebElement> textFields = driver.findElements(By.className("android.widget.EditText"));
+		textFields.get(0).sendKeys("RTK");
+		textFields.get(1).sendKeys("Remote TestKing");
+		FileUtils.copyFile(driver.getScreenshotAs(OutputType.FILE), new File("capture_A02.png"));
 
 		// click Save button
-		AndroidElement element = driver.findElementById("com.example.remotetestkit.demo:id/Save");
+		WebElement element = driver.findElement(By.id("com.example.remotetestkit.demo:id/Save"));
 		element.click();
 
 		// set text from Login display
-		AndroidElement result = driver.findElementById("com.example.remotetestkit.demo:id/title4");
-		System.out.println("Login Result : " + result.getText().toString());
-		assertEquals("Password Error", result.getText().toString());
-		FileUtils.copyFile(driver.getScreenshotAs(OutputType.FILE), new File("capture_03.png"));
+		WebElement result = driver.findElement(By.id("com.example.remotetestkit.demo:id/title4"));
+		System.out.println("Login Result : " + result.getText());
+		Assertions.assertEquals("Password Error", result.getText());
+		FileUtils.copyFile(driver.getScreenshotAs(OutputType.FILE), new File("capture_A03.png"));
 
 		// press return key
-		driver.pressKeyCode(4);
+		driver.pressKey(new KeyEvent(AndroidKey.BACK));
 
 		// delete and set text to text fields
-		textfields.get(1).clear();
-		textfields.get(1).sendKeys("Remote TestKit");
-		FileUtils.copyFile(driver.getScreenshotAs(OutputType.FILE), new File("capture_04.png"));
+		textFields.get(1).clear();
+		textFields.get(1).sendKeys("Remote TestKit");
+		FileUtils.copyFile(driver.getScreenshotAs(OutputType.FILE), new File("capture_A04.png"));
 
 		// click Save button
 		element.click();
 
 		// get text from Login display
-		result = driver.findElementById("com.example.remotetestkit.demo:id/title2");
-		System.out.println("Login Result : " + result.getText().toString());
-		assertEquals("Logged in", result.getText().toString());
-		FileUtils.copyFile(driver.getScreenshotAs(OutputType.FILE), new File("capture_05.png"));
+		result = driver.findElement(By.id("com.example.remotetestkit.demo:id/title2"));
+		System.out.println("Login Result : " + result.getText());
+		Assertions.assertEquals("Logged in", result.getText());
+		FileUtils.copyFile(driver.getScreenshotAs(OutputType.FILE), new File("capture_A05.png"));
 
 		Thread.sleep(5000);
 	}
