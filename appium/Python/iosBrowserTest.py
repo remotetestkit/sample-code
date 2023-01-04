@@ -25,6 +25,7 @@ class OpenUrlTest(unittest.TestCase):
             'deviceName': 'iPhone',
             'platformVersion': '14',
             'browserName': 'Safari',
+            'automationName': 'XCUITest'
         }
         warnings.filterwarnings("ignore", category=DeprecationWarning)
         self.driver = webdriver.Remote('https://gwjp.appkitbox.com/wd/hub', caps)
