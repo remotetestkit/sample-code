@@ -53,6 +53,7 @@ class ContactsAndroidTests(unittest.TestCase):
         # click Save button
         element = self.driver.find_element(By.ID, "com.example.remotetestkit.demo:id/Save")
         element.click()
+        sleep(5)
 
         # set text from Login display
         result = self.driver.find_element(By.ID, 'com.example.remotetestkit.demo:id/title4')
@@ -70,6 +71,7 @@ class ContactsAndroidTests(unittest.TestCase):
 
         # click Save button
         element.click()
+        sleep(5)
 
         # get text from Login display
         result = self.driver.find_element(By.ID, 'com.example.remotetestkit.demo:id/title2')
