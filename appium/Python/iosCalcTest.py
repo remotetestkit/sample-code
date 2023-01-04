@@ -4,6 +4,7 @@ import unittest
 
 from time import sleep
 from appium import webdriver
+from appium.webdriver.common.appiumby import AppiumBy
 
 # get userName, password from Environment variable
 RTK_USERNAME = os.environ.get('RTK_USERNAME')
@@ -21,7 +22,7 @@ class OpenUrlTest(unittest.TestCase):
             'logLevel': 'info',
             'platformName': 'iOS',
             'deviceName': 'iPhone 7.*',
-            'platformVersion': '11',
+            'platformVersion': '12',
             'bundleId': 'com.apple.calculator'
         }
         self.driver = webdriver.Remote('https://gwjp.appkitbox.com/wd/hub', caps)
@@ -36,21 +37,21 @@ class OpenUrlTest(unittest.TestCase):
         driver = self.driver
         self.driver.save_screenshot('capture_01.png')
 
-        el1 = driver.find_element_by_accessibility_id("1")
+        el1 = driver.find_element(AppiumBy.ACCESSIBILITY_ID, "1")
         el1.click()
         self.driver.save_screenshot('capture_02.png')
 
         is_lang_english = True
         try:
-            el2 = driver.find_element_by_accessibility_id("multiply")
+            el2 = driver.find_element(AppiumBy.ACCESSIBILITY_ID, "multiply")
             el2.click()
         except Exception:
             is_lang_english = False
-            el2 = driver.find_element_by_accessibility_id("乗算")
+            el2 = driver.find_element(AppiumBy.ACCESSIBILITY_ID, "乗算")
             el2.click()
         self.driver.save_screenshot('capture_03.png')
 
-        el3 = driver.find_element_by_accessibility_id("3")
+        el3 = driver.find_element(AppiumBy.ACCESSIBILITY_ID, "3")
         el3.click()
         self.driver.save_screenshot('capture_04.png')
 
@@ -61,31 +62,31 @@ class OpenUrlTest(unittest.TestCase):
         self.driver.save_screenshot('capture_06.png')
 
         if is_lang_english:
-            el4 = driver.find_element_by_accessibility_id("equals")
+            el4 = driver.find_element(AppiumBy.ACCESSIBILITY_ID, "equals")
             el4.click()
             self.driver.save_screenshot('capture_07.png')
 
-            el5 = driver.find_element_by_accessibility_id("Result")
+            el5 = driver.find_element(AppiumBy.ACCESSIBILITY_ID, "Result")
             value = el5.get_attribute('value')
 
             print("Text field value=" + value)
             self.assertEqual(value, "9")
 
-            el6 = driver.find_element_by_accessibility_id("clear")
+            el6 = driver.find_element(AppiumBy.ACCESSIBILITY_ID, "clear")
             el6.click()
             self.driver.save_screenshot('capture_08.png')
         else:
-            el4 = driver.find_element_by_accessibility_id("計算実行")
+            el4 = driver.find_element(AppiumBy.ACCESSIBILITY_ID, "計算実行")
             el4.click()
             self.driver.save_screenshot('capture_07.png')
 
-            el5 = driver.find_element_by_accessibility_id("結果")
+            el5 = driver.find_element(AppiumBy.ACCESSIBILITY_ID, "結果")
             value = el5.get_attribute('value')
 
             print("Text field value=" + value)
             self.assertEqual(value, "9")
 
-            el6 = driver.find_element_by_accessibility_id("消去")
+            el6 = driver.find_element(AppiumBy.ACCESSIBILITY_ID, "消去")
             el6.click()
             self.driver.save_screenshot('capture_07.png')
 
