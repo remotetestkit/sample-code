@@ -26,6 +26,7 @@ class OpenUrlTest(unittest.TestCase):
             'platformName': 'Android',
             'browserName': 'Chrome',
             'appiumVersion': '1.22.3',
+            'automationName': 'UiAutomator2',
             'chromeOptions': {'w3c': False}
         }
         warnings.filterwarnings("ignore", category=DeprecationWarning)
