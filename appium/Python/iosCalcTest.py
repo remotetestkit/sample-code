@@ -5,6 +5,7 @@ import unittest
 from time import sleep
 from appium import webdriver
 from appium.webdriver.common.appiumby import AppiumBy
+import warnings
 
 # get userName, password from Environment variable
 RTK_USERNAME = os.environ.get('RTK_USERNAME')
@@ -25,6 +26,7 @@ class OpenUrlTest(unittest.TestCase):
             'platformVersion': '12',
             'bundleId': 'com.apple.calculator'
         }
+        warnings.filterwarnings("ignore", category=DeprecationWarning)
         self.driver = webdriver.Remote('https://gwjp.appkitbox.com/wd/hub', caps)
         print(self.driver)
 
