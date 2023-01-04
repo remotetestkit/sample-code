@@ -26,7 +26,7 @@ class ContactsAndroidTests(unittest.TestCase):
             'platformName': 'Android',
             'unicodeKeyboard': 'true',
             'resetKeyboard': 'true',
-            'appiumVersion': '1.15.1',
+            'appiumVersion': '1.22.3',
             'newCommandTimeout': '180',
             # set application from RemoteTestKit storage
             # 'app': 'RTKdemo.apk',
