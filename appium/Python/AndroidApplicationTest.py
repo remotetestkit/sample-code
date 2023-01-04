@@ -7,6 +7,7 @@ from appium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.common.by import By
+import warnings
 
 # get userName, password from Environment variable
 RTK_USERNAME = os.environ.get('RTK_USERNAME')
@@ -34,6 +35,7 @@ class ContactsAndroidTests(unittest.TestCase):
             'appPackage': 'com.example.remotetestkit.demo',
             'appActivity': 'MainActivity'
         }
+        warnings.filterwarnings("ignore", category=DeprecationWarning)
         self.driver = webdriver.Remote('https://gwjp.appkitbox.com/wd/hub', caps)
         print(self.driver)
 
