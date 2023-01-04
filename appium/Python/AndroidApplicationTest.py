@@ -44,17 +44,17 @@ class ContactsAndroidTests(unittest.TestCase):
         self.driver.save_screenshot('capture_01.png')
 
         # get text fields and set text in it
-        textfields = self.driver.find_elements_by_class_name("android.widget.EditText")
+        textfields = self.driver.find_elements(By.CLASS_NAME, "android.widget.EditText")
         textfields[0].send_keys("RTK")
         textfields[1].send_keys("Remote TestKing")
         self.driver.save_screenshot('capture_02.png')
 
         # click Save button
-        element = self.driver.find_element_by_id("com.example.remotetestkit.demo:id/Save")
+        element = self.driver.find_element(By.ID, "com.example.remotetestkit.demo:id/Save")
         element.click()
 
         # set text from Login display
-        result = self.driver.find_element_by_id('com.example.remotetestkit.demo:id/title4')
+        result = self.driver.find_element(By.ID, 'com.example.remotetestkit.demo:id/title4')
         print("Login Result : " + result.text)
         self.assertEqual('Password Error', result.text)
         self.driver.save_screenshot('capture_03.png')
@@ -71,7 +71,7 @@ class ContactsAndroidTests(unittest.TestCase):
         element.click()
 
         # get text from Login display
-        result = self.driver.find_element_by_id('com.example.remotetestkit.demo:id/title2')
+        result = self.driver.find_element(By.ID, 'com.example.remotetestkit.demo:id/title2')
         print("Login Result : " + result.text)
         self.assertEqual('Logged in', result.text)
         self.driver.save_screenshot('capture_05.png')
