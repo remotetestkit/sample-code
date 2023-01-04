@@ -4,8 +4,6 @@ import unittest
 
 from time import sleep
 from appium import webdriver
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.common.by import By
 import warnings
 
