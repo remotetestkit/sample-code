@@ -7,6 +7,7 @@ from appium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.common.by import By
+import warnings
 
 # get userName, password from Environment variable
 RTK_USERNAME = os.environ.get('RTK_USERNAME')
@@ -27,6 +28,7 @@ class OpenUrlTest(unittest.TestCase):
             'appiumVersion': '1.15.1',
             'chromeOptions': {'w3c': False}
         }
+        warnings.filterwarnings("ignore", category=DeprecationWarning)
         self.driver = webdriver.Remote('https://gwjp.appkitbox.com/wd/hub', caps)
         print(self.driver)
 
