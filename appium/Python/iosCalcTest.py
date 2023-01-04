@@ -2,7 +2,6 @@ import os
 import sys
 import unittest
 
-from time import sleep
 from appium import webdriver
 from appium.webdriver.common.appiumby import AppiumBy
 import warnings
