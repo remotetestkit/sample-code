@@ -23,7 +23,8 @@ class OpenUrlTest(unittest.TestCase):
             'platformName': 'iOS',
             'deviceName': 'iPhone 7.*',
             'platformVersion': '12',
-            'bundleId': 'com.apple.calculator'
+            'bundleId': 'com.apple.calculator',
+            'automationName': 'XCUITest'
         }
         warnings.filterwarnings("ignore", category=DeprecationWarning)
         self.driver = webdriver.Remote('https://gwjp.appkitbox.com/wd/hub', caps)
