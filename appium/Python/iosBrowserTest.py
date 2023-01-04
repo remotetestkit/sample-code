@@ -5,6 +5,7 @@ import unittest
 from time import sleep
 from appium import webdriver
 from selenium.webdriver.common.by import By
+import warnings
 
 # get userName, password from Environment variable
 RTK_USERNAME = os.environ.get('RTK_USERNAME')
@@ -25,6 +26,7 @@ class OpenUrlTest(unittest.TestCase):
             'platformVersion': '14',
             'browserName': 'Safari',
         }
+        warnings.filterwarnings("ignore", category=DeprecationWarning)
         self.driver = webdriver.Remote('https://gwjp.appkitbox.com/wd/hub', caps)
         print(self.driver)
 
