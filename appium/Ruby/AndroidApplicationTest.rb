@@ -30,13 +30,15 @@ class ContactsAndroidTests < Test::Unit::TestCase
                 platformName: 'Android',
                 unicodeKeyboard: 'true',
                 resetKeyboard: 'true',
-                appiumVersion: '1.15.1'
+                appiumVersion: '1.22.3',
+                automationName: 'UiAutomator2',
+                newCommandTimeout: '180',
                 # set application from RemoteTestKit storage
                 # app: 'RTKdemo.apk',
                 # set application from HTTP Url
                 app: 'https://github.com/remotetestkit/sample-code/raw/master/appium/apk/RTKdemo.apk',
                 appPackage: 'com.example.remotetestkit.demo',
-                appActivity: 'MainActivity',
+                appActivity: 'MainActivity'
             },
             appium_lib: {
               server_url: 'https://gwjp.appkitbox.com/wd/hub',
@@ -63,6 +65,7 @@ class ContactsAndroidTests < Test::Unit::TestCase
         # click Save button
         element = @driver.find_element(:id,'com.example.remotetestkit.demo:id/Save')
         element.click()
+        sleep(5)
 
         # set text from Login display
         result = @driver.find_element(:id,'com.example.remotetestkit.demo:id/title4')
@@ -72,6 +75,7 @@ class ContactsAndroidTests < Test::Unit::TestCase
 
         # press return key
     		@driver.press_keycode(4)
+        sleep(5)
 
         # delete and set text to text fields
         textfields[1].clear()
@@ -80,6 +84,7 @@ class ContactsAndroidTests < Test::Unit::TestCase
 
         # click Save button
         element.click()
+        sleep(5)
 
         # get text from Login display
     		result = @driver.find_element(:id,'com.example.remotetestkit.demo:id/title2')
