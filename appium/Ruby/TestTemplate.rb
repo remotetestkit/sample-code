@@ -21,7 +21,8 @@ class AppiumTest < Test::Unit::TestCase
                 deviceName: 'Nexus 5',
                 platformName: 'Android',
                 browserName: 'Chrome',
-                appiumVersion: '1.15.1'
+                appiumVersion: '1.12.3',
+                automationName: 'UiAutomator2'
             },
             appium_lib: {
                 server_url: 'https://gwjp.appkitbox.com/wd/hub',
