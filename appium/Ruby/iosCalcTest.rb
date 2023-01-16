@@ -25,6 +25,7 @@ class ContactsIOsTests < Test::Unit::TestCase
         password: RTK_PASSWORD,
         deviceName: 'iPhone 8.*',
         platformName: 'iOS',
+        automationName: 'XCUITest'
         # lang is japanese
         # platformVersion: '13',
         # lang is english
