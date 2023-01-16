@@ -4,9 +4,8 @@ import unittest
 
 from time import sleep
 from appium import webdriver
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.common.by import By
+import warnings
 
 # get userName, password from Environment variable
 RTK_USERNAME = os.environ.get('RTK_USERNAME')
@@ -24,9 +23,11 @@ class OpenUrlTest(unittest.TestCase):
             'deviceName': 'Nexus 5',
             'platformName': 'Android',
             'browserName': 'Chrome',
-            'appiumVersion': '1.15.1',
+            'appiumVersion': '1.22.3',
+            'automationName': 'UiAutomator2',
             'chromeOptions': {'w3c': False}
         }
+        warnings.filterwarnings("ignore", category=DeprecationWarning)
         self.driver = webdriver.Remote('https://gwjp.appkitbox.com/wd/hub', caps)
         print(self.driver)
 
@@ -39,7 +40,7 @@ class OpenUrlTest(unittest.TestCase):
         url = "https://www.google.com/"
         print("Open URL: " + url)
         self.driver.get(url)
-        element = self.driver.find_element_by_name('q')
+        element = self.driver.find_element(By.NAME, 'q')
         sleep(5)
         self.driver.save_screenshot('capture_01.png')
 
@@ -52,7 +53,7 @@ class OpenUrlTest(unittest.TestCase):
         self.driver.save_screenshot('capture_02.png')
 
         # Get value
-        value = self.driver.find_element_by_name('q').get_attribute('value')
+        value = self.driver.find_element(By.NAME, 'q').get_attribute('value')
         print("Text field value=" + value)
         self.assertEqual(value, "Remote testKit")
 
