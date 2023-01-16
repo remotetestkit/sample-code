@@ -16,18 +16,21 @@ unless RTK_USERNAME && RTK_PASSWORD
   exit(0)
 end
 
-class ContactsAndroidTests < Test::Unit::TestCase
+class ContactsIOsTests < Test::Unit::TestCase
   def setup
     opts = {
       caps: {
         # get userName, password from Environment variable
         userName: RTK_USERNAME,
         password: RTK_PASSWORD,
-        deviceName: 'iPhone 7.*',
+        deviceName: 'iPhone 8.*',
         platformName: 'iOS',
-        platformVersion: '12',
-        bundleId: 'com.apple.calculator',
         automationName: 'XCUITest'
+        # lang is japanese
+        # platformVersion: '13',
+        # lang is english
+        platformVersion: '14.0.1',
+        bundleId: 'com.apple.calculator'
       },
       appium_lib: {
         server_url: 'https://gwjp.appkitbox.com/wd/hub',
@@ -88,6 +91,7 @@ class ContactsAndroidTests < Test::Unit::TestCase
     else
       el4 = @driver.find_element(:accessibility_id, '計算実行')
       el4.click
+      @driver.save_screenshot('capture_07.png')
 
       el5 = @driver.find_element(:accessibility_id, '結果')
       value = el5.attribute('value')
