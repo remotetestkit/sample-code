@@ -22,7 +22,7 @@ class OpenUrlTest < Test::Unit::TestCase
                 platformName: 'Android',
                 browserName: 'Chrome',
                 appiumVersion: '1.22.3',
-                automationName: 'UiAutomator2'
+                automationName: 'UiAutomator2',
                 chromeOptions: {'w3c': false}
             },
             appium_lib: {
@@ -43,7 +43,8 @@ class OpenUrlTest < Test::Unit::TestCase
         url = "https://www.google.com/"
         puts "Open URL: " + url
         @driver.get(url)
-        element = @driver.find_element(:css, 'input[name="q"]')
+        element = @driver.find_element(:css, 'textarea')
+        sleep(5)
         @driver.save_screenshot('capture_01.png')
 
         # Input keys
@@ -55,7 +56,7 @@ class OpenUrlTest < Test::Unit::TestCase
         @driver.save_screenshot('capture_02.png')
 
         # Get value
-        value = @driver.find_element(:css, 'input[name="q"]').value
+        value = @driver.find_element(:css, 'textarea').value
         puts "Text field value=" + value
         assert_equal true, value == "Remote testKit"
     end
