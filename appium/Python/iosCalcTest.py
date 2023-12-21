@@ -4,6 +4,7 @@ import unittest
 
 from appium import webdriver
 from appium.webdriver.common.appiumby import AppiumBy
+from appium.options.common import AppiumOptions
 import warnings
 
 # get userName, password from Environment variable
@@ -27,7 +28,12 @@ class OpenUrlTest(unittest.TestCase):
             'automationName': 'XCUITest'
         }
         warnings.filterwarnings("ignore", category=DeprecationWarning)
-        self.driver = webdriver.Remote('https://gwjp.appkitbox.com/wd/hub', caps)
+        options = AppiumOptions()
+        for k in caps:
+            options.set_capability(k, caps[k])
+        self.driver = webdriver.Remote(
+            "https://gwjp.appkitbox.com/wd/hub", options=options
+        )
         print(self.driver)
 
     def tearDown(self):
@@ -90,7 +96,7 @@ class OpenUrlTest(unittest.TestCase):
 
             el6 = driver.find_element(AppiumBy.ACCESSIBILITY_ID, "消去")
             el6.click()
-            self.driver.save_screenshot('capture_07.png')
+            self.driver.save_screenshot('capture_08.png')
 
 
 if __name__ == '__main__':

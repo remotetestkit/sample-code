@@ -5,6 +5,7 @@ import unittest
 from time import sleep
 from appium import webdriver
 from selenium.webdriver.common.by import By
+from appium.options.common import AppiumOptions
 import warnings
 
 # get userName, password from Environment variable
@@ -28,7 +29,12 @@ class OpenUrlTest(unittest.TestCase):
             'automationName': 'XCUITest'
         }
         warnings.filterwarnings("ignore", category=DeprecationWarning)
-        self.driver = webdriver.Remote('https://gwjp.appkitbox.com/wd/hub', caps)
+        options = AppiumOptions()
+        for k in caps:
+            options.set_capability(k, caps[k])
+        self.driver = webdriver.Remote(
+            "https://gwjp.appkitbox.com/wd/hub", options=options
+        )
         print(self.driver)
 
     def tearDown(self):
@@ -39,7 +45,7 @@ class OpenUrlTest(unittest.TestCase):
         url = "https://www.google.com/"
         print("Open URL: " + url)
         self.driver.get(url)
-        element = self.driver.find_element(By.NAME, 'q')
+        element = self.driver.find_element(By.CSS_SELECTOR, 'textarea')
         sleep(5)
         self.driver.save_screenshot('capture_01.png')
 
@@ -52,7 +58,7 @@ class OpenUrlTest(unittest.TestCase):
         self.driver.save_screenshot('capture_02.png')
 
         # Get value
-        value = self.driver.find_element(By.NAME, 'q').get_attribute('value')
+        value = self.driver.find_element(By.CSS_SELECTOR, 'textarea').get_attribute('value')
         print("Text field value=" + value)
         self.assertEqual(value, "Remote testKit")
 

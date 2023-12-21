@@ -5,6 +5,7 @@ import unittest
 from time import sleep
 from appium import webdriver
 from selenium.webdriver.common.by import By
+from appium.options.common import AppiumOptions
 import warnings
 
 # get userName, password from Environment variable
@@ -35,7 +36,12 @@ class ContactsAndroidTests(unittest.TestCase):
             'appActivity': 'MainActivity'
         }
         warnings.filterwarnings("ignore", category=DeprecationWarning)
-        self.driver = webdriver.Remote('https://gwjp.appkitbox.com/wd/hub', caps)
+        options = AppiumOptions()
+        for k in caps:
+            options.set_capability(k, caps[k])
+        self.driver = webdriver.Remote(
+            "https://gwjp.appkitbox.com/wd/hub", options=options
+        )        
         print(self.driver)
 
     def tearDown(self):
