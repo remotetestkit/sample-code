@@ -4,6 +4,7 @@ import unittest
 
 from time import sleep
 from appium import webdriver
+from appium.options.common import AppiumOptions
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.common.by import By
@@ -26,7 +27,12 @@ class AppiumTest(unittest.TestCase):
             'browserName': 'Chrome',
             'appiumVersion': '1.15.1'
         }
-        self.driver = webdriver.Remote('https://gwjp.appkitbox.com/wd/hub', caps)
+        options = AppiumOptions()
+        for k in caps:
+            options.set_capability(k, caps[k])
+        self.driver = webdriver.Remote(
+            "https://gwjp.appkitbox.com/wd/hub", options=options
+        )
         print(self.driver)
 
     def tearDown(self):
