@@ -26,8 +26,9 @@ class ContactsAndroidTests < Test::Unit::TestCase
               	# get userName, password from Environment variable
                 userName: RTK_USERNAME,
                 password: RTK_PASSWORD,
-                deviceName: 'Nexus 5',
+                deviceName: 'Pixel',
                 platformName: 'Android',
+                platformVersion: '12',
                 unicodeKeyboard: 'true',
                 resetKeyboard: 'true',
                 appiumVersion: '1.22.3',

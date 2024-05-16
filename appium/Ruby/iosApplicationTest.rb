@@ -23,14 +23,14 @@ class ContactsIOsTests < Test::Unit::TestCase
         # get userName, password from Environment variable
         userName: RTK_USERNAME,
         password: RTK_PASSWORD,
-        deviceName: 'iPhone 8.*',
+        deviceName: 'iPhone',
         platformName: 'iOS',
         automationName: 'XCUITest',
         # lang is japanese
         # platformVersion: '13',
         # lang is english
-        platformVersion: '14.0.1',
-        app: 'RTKappium.ipa',
+        platformVersion: '14',
+        app: 'https://github.com/remotetestkit/sample-code/raw/master/appium/apk/RTKappium.ipa',
         bundleId: 'com.example.remotetestkit.demo'
       },
       appium_lib: {
