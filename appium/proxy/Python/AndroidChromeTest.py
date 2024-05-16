@@ -46,9 +46,11 @@ class OpenUrlTest(unittest.TestCase):
     def setUp(self):
         caps = {
             'accessToken': RTK_ACCESSTOKEN,
-            'deviceName': 'Nexus 5',
+            'deviceName': 'Pixel',
             'platformName': 'Android',
             'browserName': 'Chrome',
+            'appiumVersion': '1.22.3',
+            'automationName': 'UiAutomator2',
             'chromeOptions': {'w3c': False}
         }
         # Specify the endpoint
