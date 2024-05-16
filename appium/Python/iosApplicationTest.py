@@ -25,7 +25,7 @@ class OpenUrlTest(unittest.TestCase):
             'platformName': 'iOS',
             'deviceName': 'iPhone',
             'platformVersion': '14',
-            "app": "RTKappium.ipa",
+            "app": "https://github.com/remotetestkit/sample-code/raw/master/appium/apk/RTKappium.ipa",
             "bundleId": "com.example.remotetestkit.demo",
             'automationName': 'XCUITest'
         }
