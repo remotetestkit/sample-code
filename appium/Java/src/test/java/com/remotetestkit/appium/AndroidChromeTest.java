@@ -33,7 +33,7 @@ public class AndroidChromeTest {
 		capabilities.setCapability("userName", System.getenv("userName"));
 		capabilities.setCapability("password", System.getenv("password"));
 		capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
-		capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Nexus 5");
+		capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Pixel");
 		capabilities.setCapability(AndroidMobileCapabilityType.BROWSER_NAME, "Chrome");
 		capabilities.setCapability("appiumVersion", "1.22.3");
 
