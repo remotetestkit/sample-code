@@ -9,8 +9,7 @@
 
 ## Prepare for Android Application Test
  Please add apk file(sample-code/appium/apk/RTKdemo.apk) to 
- "Remote testKit web(https://webapp.appkitbox.com) -> Rapid Tester -> Mobile App(Add)" 
-
+　　Upload apk files from app storage in RemoteTestKit's PC client.
 ## File description
 
 * AndroidApplicationTest.rb
