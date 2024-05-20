@@ -21,8 +21,9 @@ class ContactsAndroidTests(unittest.TestCase):
         caps = {
             'userName': RTK_USERNAME,
             'password': RTK_PASSWORD,
-            'deviceName': 'Nexus 5',
+            'deviceName': 'Pixel',
             'platformName': 'Android',
+            'platformVersion': '12',
             'unicodeKeyboard': 'true',
             'resetKeyboard': 'true',
             'appiumVersion': '1.22.3',

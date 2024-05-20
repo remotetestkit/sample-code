@@ -21,7 +21,7 @@ class OpenUrlTest(unittest.TestCase):
         caps = {
             'userName': RTK_USERNAME,
             'password': RTK_PASSWORD,
-            'deviceName': 'Nexus 5',
+            'deviceName': 'Pixel',
             'platformName': 'Android',
             'browserName': 'Chrome',
             'appiumVersion': '1.22.3',

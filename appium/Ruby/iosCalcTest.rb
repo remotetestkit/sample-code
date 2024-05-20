@@ -23,13 +23,13 @@ class ContactsIOsTests < Test::Unit::TestCase
         # get userName, password from Environment variable
         userName: RTK_USERNAME,
         password: RTK_PASSWORD,
-        deviceName: 'iPhone 8.*',
+        deviceName: 'iPhone',
         platformName: 'iOS',
         automationName: 'XCUITest',
         # lang is japanese
         # platformVersion: '13',
         # lang is english
-        platformVersion: '14.0.1',
+        platformVersion: '14',
         bundleId: 'com.apple.calculator'
       },
       appium_lib: {

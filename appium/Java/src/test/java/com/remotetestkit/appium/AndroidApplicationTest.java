@@ -34,7 +34,8 @@ public class AndroidApplicationTest {
 		capabilities.setCapability("userName", System.getenv("userName"));
 		capabilities.setCapability("password", System.getenv("password"));
 		capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
-		capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Nexus 5");
+		capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Pixel");
+		capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "12");
 		capabilities.setCapability("unicodeKeyboard", true);
 		capabilities.setCapability("resetKeyboard", true);
 		capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, Integer.toString(180));
