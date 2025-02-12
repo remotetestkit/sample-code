@@ -29,12 +29,13 @@ class ContactsIOsTests < Test::Unit::TestCase
         # lang is japanese
         # platformVersion: '13',
         # lang is english
-        platformVersion: '14',
+        platformVersion: '17',
         bundleId: 'com.apple.calculator'
       },
       appium_lib: {
         server_url: 'https://gwjp.appkitbox.com/wd/hub',
-        wait: 60
+        wait: 60,
+        newCommandTimeout: 180
       }
     }
     @driver = Appium::Driver.new(opts).start_driver
