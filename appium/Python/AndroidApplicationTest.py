@@ -23,18 +23,18 @@ class ContactsAndroidTests(unittest.TestCase):
             'password': RTK_PASSWORD,
             'deviceName': 'Pixel',
             'platformName': 'Android',
-            'platformVersion': '12',
+            'platformVersion': '15',
             'unicodeKeyboard': 'true',
             'resetKeyboard': 'true',
-            'appiumVersion': '1.22.3',
+            'appiumVersion': '2.11.2',
             'automationName': 'UiAutomator2',
             'newCommandTimeout': '180',
             # set application from RemoteTestKit storage
-            # 'app': 'RTKdemo.apk',
+            # 'app': 'RTKappium.apk',
             # set application from HTTP Url
-            'app': 'https://github.com/remotetestkit/sample-code/raw/master/appium/apk/RTKdemo.apk',
-            'appPackage': 'com.example.remotetestkit.demo',
-            'appActivity': 'MainActivity'
+            #'app': 'https://github.com/remotetestkit/sample-code/raw/master/appium/apk/RTKappium.apk',
+            'appPackage': 'com.remotetestkit.demo',
+            'appActivity': '.MainActivity'
         }
         warnings.filterwarnings("ignore", category=DeprecationWarning)
         options = AppiumOptions()
@@ -59,12 +59,12 @@ class ContactsAndroidTests(unittest.TestCase):
         self.driver.save_screenshot('capture_02.png')
 
         # click Save button
-        element = self.driver.find_element(By.ID, "com.example.remotetestkit.demo:id/Save")
+        element = self.driver.find_element(By.ID, "com.remotetestkit.demo:id/Save")
         element.click()
         sleep(5)
 
         # set text from Login display
-        result = self.driver.find_element(By.ID, 'com.example.remotetestkit.demo:id/title4')
+        result = self.driver.find_element(By.ID, 'com.remotetestkit.demo:id/title4')
         print("Login Result : " + result.text)
         self.assertEqual('Password Error', result.text)
         self.driver.save_screenshot('capture_03.png')
@@ -82,7 +82,7 @@ class ContactsAndroidTests(unittest.TestCase):
         sleep(5)
 
         # get text from Login display
-        result = self.driver.find_element(By.ID, 'com.example.remotetestkit.demo:id/title2')
+        result = self.driver.find_element(By.ID, 'com.remotetestkit.demo:id/title2')
         print("Login Result : " + result.text)
         self.assertEqual('Logged in', result.text)
         self.driver.save_screenshot('capture_05.png')
