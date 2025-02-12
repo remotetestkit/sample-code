@@ -24,7 +24,7 @@ class OpenUrlTest(unittest.TestCase):
             'logLevel': 'info',
             'platformName': 'iOS',
             'deviceName': 'iPhone',
-            'platformVersion': '14',
+            'platformVersion': '18',
             'browserName': 'Safari',
             'automationName': 'XCUITest'
         }
