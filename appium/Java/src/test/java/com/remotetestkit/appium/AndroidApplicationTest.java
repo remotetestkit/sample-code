@@ -1,4 +1,4 @@
-// Please add apk file(/appium/apk/RTKdemo.apk) to "Remote testKit web(https://webapp.appkitbox.com) -> Rapid Tester -> Mobile App(Add)" before this test
+// Please add apk file(/appium/apk/RTKappium.apk) to "Remote testKit web(https://webapp.appkitbox.com) -> Rapid Tester -> Mobile App(Add)" before this test
 
 package com.remotetestkit.appium;
 
@@ -35,17 +35,18 @@ public class AndroidApplicationTest {
 		capabilities.setCapability("password", System.getenv("password"));
 		capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
 		capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Pixel");
-		capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "12");
+		capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "15");
 		capabilities.setCapability("unicodeKeyboard", true);
 		capabilities.setCapability("resetKeyboard", true);
 		capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, Integer.toString(180));
-		capabilities.setCapability("appiumVersion", "1.22.3");
+		capabilities.setCapability("appiumVersion", "2.11.2");
+		capabilities.setCapability("automationName", "UiAutomator2");
 		// set application from RemoteTestKit storage
-		// capabilities.setCapability(MobileCapabilityType.APP, "RTKdemo.apk");
+		// capabilities.setCapability(MobileCapabilityType.APP, "RTKappium.apk");
 		// set application from HTTP Url
-		capabilities.setCapability(MobileCapabilityType.APP, "https://github.com/remotetestkit/sample-code/raw/master/appium/apk/RTKdemo.apk");
-		capabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "com.example.remotetestkit.demo");
-		capabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, "MainActivity");
+		capabilities.setCapability(MobileCapabilityType.APP, "https://github.com/remotetestkit/sample-code/raw/master/appium/apk/RTKappium.apk");
+		capabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "com.remotetestkit.demo");
+		capabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, ".MainActivity");
 
 		driver = new AndroidDriver(new URL("https://gwjp.appkitbox.com/wd/hub"), capabilities);
 
@@ -68,11 +69,11 @@ public class AndroidApplicationTest {
 		FileUtils.copyFile(driver.getScreenshotAs(OutputType.FILE), new File("capture_A02.png"));
 
 		// click Save button
-		WebElement element = driver.findElement(By.id("com.example.remotetestkit.demo:id/Save"));
+		WebElement element = driver.findElement(By.id("com.remotetestkit.demo:id/Save"));
 		element.click();
 
 		// set text from Login display
-		WebElement result = driver.findElement(By.id("com.example.remotetestkit.demo:id/title4"));
+		WebElement result = driver.findElement(By.id("com.remotetestkit.demo:id/title4"));
 		System.out.println("Login Result : " + result.getText());
 		Assertions.assertEquals("Password Error", result.getText());
 		FileUtils.copyFile(driver.getScreenshotAs(OutputType.FILE), new File("capture_A03.png"));
@@ -89,7 +90,7 @@ public class AndroidApplicationTest {
 		element.click();
 
 		// get text from Login display
-		result = driver.findElement(By.id("com.example.remotetestkit.demo:id/title2"));
+		result = driver.findElement(By.id("com.remotetestkit.demo:id/title2"));
 		System.out.println("Login Result : " + result.getText());
 		Assertions.assertEquals("Logged in", result.getText());
 		FileUtils.copyFile(driver.getScreenshotAs(OutputType.FILE), new File("capture_A05.png"));
