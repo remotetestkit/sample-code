@@ -29,7 +29,7 @@ class WebviewAppTest(unittest.TestCase):
             "newCommandTimeout": "180",
             'app': "https://github.com/remotetestkit/sample-code/raw/master/appium/apk/RTKappium_webview.apk",
             "appPackage": "com.example.rtkappium_webview",
-            "appActivity": "MainActivity",
+            "appActivity": ".MainActivity",
         }
         warnings.filterwarnings("ignore", category=DeprecationWarning)
         options = AppiumOptions()
