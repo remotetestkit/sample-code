@@ -1,4 +1,4 @@
-# Please add apk file(/appium/apk/RTKdemo.apk) to "Remote testKit web(https://webapp.appkitbox.com) -> Rapid Tester -> Mobile App(Add)" before this test
+# Please add apk file(/appium/apk/RTKappium.apk) to "Remote testKit web(https://webapp.appkitbox.com) -> Rapid Tester -> Mobile App(Add)" before this test
 
 # gem install selenium-webdriver
 # gem install appium_lib
@@ -28,18 +28,18 @@ class ContactsAndroidTests < Test::Unit::TestCase
                 password: RTK_PASSWORD,
                 deviceName: 'Pixel',
                 platformName: 'Android',
-                platformVersion: '12',
+                platformVersion: '15',
                 unicodeKeyboard: 'true',
                 resetKeyboard: 'true',
-                appiumVersion: '1.22.3',
+                appiumVersion: '2.11.2',
                 automationName: 'UiAutomator2',
                 newCommandTimeout: '180',
                 # set application from RemoteTestKit storage
-                # app: 'RTKdemo.apk',
+                # app: 'RTKappium.apk',
                 # set application from HTTP Url
-                app: 'https://github.com/remotetestkit/sample-code/raw/master/appium/apk/RTKdemo.apk',
-                appPackage: 'com.example.remotetestkit.demo',
-                appActivity: 'MainActivity'
+                app: 'https://github.com/remotetestkit/sample-code/raw/master/appium/apk/RTKappium.apk',
+                appPackage: 'com.remotetestkit.demo',
+                appActivity: '.MainActivity'
             },
             appium_lib: {
               server_url: 'https://gwjp.appkitbox.com/wd/hub',
@@ -64,12 +64,12 @@ class ContactsAndroidTests < Test::Unit::TestCase
         @driver.save_screenshot('capture_02.png')
 
         # click Save button
-        element = @driver.find_element(:id,'com.example.remotetestkit.demo:id/Save')
+        element = @driver.find_element(:id,'com.remotetestkit.demo:id/Save')
         element.click()
         sleep(5)
 
         # set text from Login display
-        result = @driver.find_element(:id,'com.example.remotetestkit.demo:id/title4')
+        result = @driver.find_element(:id,'com.remotetestkit.demo:id/title4')
         puts 'Login Result : ' + result.text
         assert_equal('Password Error', result.text)
         @driver.save_screenshot('capture_03.png')
@@ -88,7 +88,7 @@ class ContactsAndroidTests < Test::Unit::TestCase
         sleep(5)
 
         # get text from Login display
-    		result = @driver.find_element(:id,'com.example.remotetestkit.demo:id/title2')
+    		result = @driver.find_element(:id,'com.remotetestkit.demo:id/title2')
         puts 'Login Result : ' + result.text
         assert_equal('Logged in', result.text)
         @driver.save_screenshot('capture_05.png')
