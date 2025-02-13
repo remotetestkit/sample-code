@@ -1,5 +1,3 @@
-# Please add apk file(/appium/apk/RTKappium.apk) to "Remote testKit web(https://webapp.appkitbox.com) -> Rapid Tester -> Mobile App(Add)" before this test
-
 # gem install selenium-webdriver
 # gem install appium_lib
 # export RTK_USERNAME=xxxx
