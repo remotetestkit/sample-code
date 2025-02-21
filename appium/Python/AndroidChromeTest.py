@@ -24,7 +24,7 @@ class OpenUrlTest(unittest.TestCase):
             'deviceName': 'Pixel',
             'platformName': 'Android',
             'browserName': 'Chrome',
-            'appiumVersion': '1.22.3',
+            'appiumVersion': '2.11.2',
             'automationName': 'UiAutomator2',
             'chromeOptions': {'w3c': False}
         }

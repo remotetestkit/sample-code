@@ -35,7 +35,8 @@ public class AndroidChromeTest {
 		capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
 		capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Pixel");
 		capabilities.setCapability(AndroidMobileCapabilityType.BROWSER_NAME, "Chrome");
-		capabilities.setCapability("appiumVersion", "1.22.3");
+		capabilities.setCapability("appiumVersion", "2.11.2");
+		capabilities.setCapability("automationName", "UiAutomator2");
 
 		driver = new AndroidDriver(new URL("https://gwjp.appkitbox.com/wd/hub"), capabilities);
 	}

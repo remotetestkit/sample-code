@@ -29,13 +29,14 @@ class ContactsIOsTests < Test::Unit::TestCase
         # lang is japanese
         # platformVersion: '13',
         # lang is english
-        platformVersion: '14',
+        platformVersion: '17',
         app: 'https://github.com/remotetestkit/sample-code/raw/master/appium/apk/RTKappium.ipa',
         bundleId: 'com.example.remotetestkit.demo'
       },
       appium_lib: {
         server_url: 'https://gwjp.appkitbox.com/wd/hub',
-        wait: 60
+        wait: 60,
+        newCommandTimeout: 180
       }
     }
     @driver = Appium::Driver.new(opts).start_driver
