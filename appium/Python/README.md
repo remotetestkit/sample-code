@@ -8,8 +8,7 @@
   export RTK_PASSWORD=xxxx
 
 ## Prepare for Android Application Test
- Please add RTKdemo.apk file (sample-code/appium/apk/RTKdemo.apk) to 
- "Remote testKit web(https://webapp.appkitbox.com) -> Rapid Tester -> Mobile App(Add)" 
+ Please add apk file(sample-code/appium/apk/RTKdemo.apk) to 　　Upload apk files from app storage in RemoteTestKit's PC client.
 
 ## File description
 
