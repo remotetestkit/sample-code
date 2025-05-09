@@ -37,6 +37,10 @@ public class AndroidChromeTest {
 		capabilities.setCapability("appiumVersion", "2.11.2");
 		capabilities.setCapability("automationName", "UiAutomator2");
 
+		ChromeOptions chromeOptions = new ChromeOptions();
+		chromeOptions.setExperimentalOption("excludeSwitches", Arrays.asList("enable-automation"));
+		capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+
 		driver = new AndroidDriver(new URL("https://gwjp.appkitbox.com/wd/hub"), capabilities);
 	}
 
