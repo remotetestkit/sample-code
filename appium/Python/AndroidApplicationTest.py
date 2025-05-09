@@ -32,7 +32,7 @@ class ContactsAndroidTests(unittest.TestCase):
             # set application from RemoteTestKit storage
             # 'app': 'RTKappium.apk',
             # set application from HTTP Url
-            #'app': 'https://github.com/remotetestkit/sample-code/raw/master/appium/apk/RTKappium.apk',
+            'app': 'https://github.com/remotetestkit/sample-code/raw/master/appium/apk/RTKappium.apk',
             'appPackage': 'com.remotetestkit.demo',
             'appActivity': '.MainActivity'
         }
