@@ -23,7 +23,7 @@ class OpenUrlTest < Test::Unit::TestCase
                 browserName: 'Chrome',
                 appiumVersion: '2.11.2',
                 automationName: 'UiAutomator2',
-                chromeOptions: {'w3c': false}
+                chromeOptions: {'w3c': false, 'excludeSwitches': ['enable-automation']}
             },
             appium_lib: {
                 server_url: 'https://gwjp.appkitbox.com/wd/hub',
