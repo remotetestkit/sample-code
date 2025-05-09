@@ -2,9 +2,12 @@ package com.remotetestkit.appium;
 
 import java.io.File;
 import java.net.URL;
+import java.util.Arrays;
 
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
+import io.appium.java_client.android.options.UiAutomator2Options;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
@@ -12,14 +15,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.DesiredCapabilities;
-
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.remote.AndroidMobileCapabilityType;
-import io.appium.java_client.remote.MobileCapabilityType;
 
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class AndroidChromeTest {
 
@@ -27,16 +26,20 @@ public class AndroidChromeTest {
 
 	@BeforeAll
 	static void initAll() throws Exception {
-		DesiredCapabilities capabilities = new DesiredCapabilities();
+		UiAutomator2Options capabilities = new UiAutomator2Options();
 
 		// get userName, password from Environment variable
 		capabilities.setCapability("userName", System.getenv("userName"));
 		capabilities.setCapability("password", System.getenv("password"));
-		capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
-		capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Pixel");
-		capabilities.setCapability(AndroidMobileCapabilityType.BROWSER_NAME, "Chrome");
+		capabilities.setCapability("platformName", "Android");
+		capabilities.setCapability("deviceName", "Pixel");
+		capabilities.setCapability("browserName", "Chrome");
 		capabilities.setCapability("appiumVersion", "2.11.2");
 		capabilities.setCapability("automationName", "UiAutomator2");
+
+		ChromeOptions chromeOptions = new ChromeOptions();
+		chromeOptions.setExperimentalOption("excludeSwitches", Arrays.asList("enable-automation"));
+		capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
 
 		driver = new AndroidDriver(new URL("https://gwjp.appkitbox.com/wd/hub"), capabilities);
 	}

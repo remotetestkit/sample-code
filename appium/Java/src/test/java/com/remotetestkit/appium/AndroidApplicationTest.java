@@ -6,6 +6,7 @@ import java.util.List;
 
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
+import io.appium.java_client.android.options.UiAutomator2Options;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
@@ -14,11 +15,8 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.remote.AndroidMobileCapabilityType;
-import io.appium.java_client.remote.MobileCapabilityType;
 
 public class AndroidApplicationTest {
 
@@ -26,25 +24,25 @@ public class AndroidApplicationTest {
 
 	@BeforeAll
 	static void initAll() throws Exception {
-		DesiredCapabilities capabilities = new DesiredCapabilities();
+		UiAutomator2Options capabilities = new UiAutomator2Options();
 
 		// get userName, password from Environment variable
 		capabilities.setCapability("userName", System.getenv("userName"));
 		capabilities.setCapability("password", System.getenv("password"));
-		capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
-		capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Pixel");
-		capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "15");
+		capabilities.setCapability("platformName", "Android");
+		capabilities.setCapability("deviceName", "Pixel");
+		capabilities.setCapability("platformVersion", "14");
 		capabilities.setCapability("unicodeKeyboard", true);
 		capabilities.setCapability("resetKeyboard", true);
-		capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, Integer.toString(180));
+		capabilities.setCapability("newCommandTimeout", Integer.toString(180));
 		capabilities.setCapability("appiumVersion", "2.11.2");
 		capabilities.setCapability("automationName", "UiAutomator2");
 		// set application from RemoteTestKit storage
 		// capabilities.setCapability(MobileCapabilityType.APP, "RTKappium.apk");
 		// set application from HTTP Url
-		capabilities.setCapability(MobileCapabilityType.APP, "https://github.com/remotetestkit/sample-code/raw/master/appium/apk/RTKappium.apk");
-		capabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "com.remotetestkit.demo");
-		capabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, ".MainActivity");
+		capabilities.setCapability("app", "https://github.com/remotetestkit/sample-code/raw/master/appium/apk/RTKappium.apk");
+		capabilities.setCapability("appPackage", "com.remotetestkit.demo");
+		capabilities.setCapability("appActivity", ".MainActivity");
 
 		driver = new AndroidDriver(new URL("https://gwjp.appkitbox.com/wd/hub"), capabilities);
 
